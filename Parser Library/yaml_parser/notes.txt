@@ -1,0 +1,31 @@
+file starts with three dashes, three dashes indicate a new yaml document
+documents end with three periods (optional)
+Indentation can be one or more spaces, but NO tabs
+
+Comments begin with the '#' symbol and can show up at the end of a line
+
+key value pairs separated by a ': ' (space must be there)
+key is always a string, value can be a string, number, array or dictionary
+
+integers can be decimal, hexadecimal (indicated by '0x' at the front), or octal (indicated by a leading 0)
+supports fiex and exponential floating point numbers
+supports NANs and infinites (negative and positive)
+
+strings are in unicode
+They don't have to be specified in quotes, but to use escape sequences we need double quotes
+Single quotes are accepted, but escape sequences are not handled
+non formatted multi-line strings are accepted with a '>' right after the ':'
+formatted multi-line strings are accepted with a '|' instead of a '>'
+
+Null values are accepted (use 'null' or '~')
+
+Boolean values can either be represented as 'True', 'On', 'Yes' and 'False', 'Off', 'No', without any quotes
+
+Single line arrays are made using '[]' and commas separating elements
+multi line arrays are made using indentation and a '-' before each elements
+
+dictionaries can be made inline by using '{}' and commans separating elements
+multi line dictionary are made using indentation 
+
+Adding a '+' after a '>' or a '|' will preserve the whitespaces at the end of a line
+Adding a '-' after a '>' or a '|' will remove the whitespaces at the end of a line
