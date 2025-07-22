@@ -26,6 +26,8 @@ int yaml_parser::Parse_File () {
     string key, value;
 
     while (getline (*file, line)) {
+        // Skip empty lines
+        if (line.empty ())      continue;
         // Remove white space from key string
         key = line.substr (0, line.find_first_of (':'));
         key.erase (remove_if (key.begin(), key.end (), ::isspace), key.end ());
