@@ -28,15 +28,31 @@ int yaml_parser::Parse_File () {
     while (getline (*file, line)) {
         // Skip empty lines
         if (line.empty ())      continue;
+
         // Remove white space from key string
-        key = line.substr (0, line.find_first_of (':'));
+        uint32_t delim_idx = line.find (": ");
+        key = line.substr (0, delim_idx);
         key.erase (remove_if (key.begin(), key.end (), ::isspace), key.end ());
 
-        // Remove ending comments
-        value = line.substr (line.find_first_of (':') + 2);
-        if (value.find_last_of ('"') < value.find_last_of ('#'))    value = value.substr (0, value.find_last_of ('#'));
+        // Skip to next line if key starts with the comment symbol '#'
+        if (key.front () == COMMENT_CHAR)     continue;
 
-        cout << key << " : " << value << endl;
+        // delim_idx being npos means that the pair is not a scalar or inline array or dictionary
+        if (delim_idx != string::npos) {
+            value = REMOVE_DELIM (line, delim_idx, PAIR_DELIM);
+            value = REMOVE_INLINE_COMMENTS (value);
+
+            // Differentiate between inline lists and dictionaries from scalars
+            if (value.front () == INLINE_ARRAY_CHAR || value.front () == INLINE_DICTIONARY_CHAR) {
+
+            } else {
+                
+            }
+        } else {
+
+        }
+
+        cout << key << " : " << value << endl; 
     }
 
     return num_errors;

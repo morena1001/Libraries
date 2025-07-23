@@ -1,6 +1,16 @@
 {
     "files.associations": {
         "xstring": "cpp",
-        "string": "cpp"
+        "string": "cpp",
+        "algorithm": "cpp",
+        "functional": "cpp",
+        "optional": "cpp",
+        "system_error": "cpp",
+        "type_traits": "cpp",
+        "xlocmon": "cpp",
+        "xtr1common": "cpp",
+        "xutility": "cpp",
+        "list": "cpp",
+        "vector": "cpp"
     }
 }
